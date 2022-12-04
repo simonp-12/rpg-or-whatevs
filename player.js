@@ -10,6 +10,7 @@ let player1 = {
     move: controlWASD,
     draw: drawPlayer
 }
+
 function controlWASD() {
     if (isKeyPressed[68]) {
         this.x += this.speed;
