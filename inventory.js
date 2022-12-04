@@ -96,8 +96,6 @@ function drawInventory() {
             context.font = "30px Baskerville Old Face";
             context.fillStyle = "white";
             context.fillText(itemKinds[i].ammount, itemKinds[i].x + 40, itemKinds[i].y + 30)
-        } else {
-            console.log("blah")
         }
     }
 }
