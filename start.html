@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- code.zip 2020 -->
+<html>
+
+<head>
+    <style>
+        body,
+        canvas {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta charset="UTF-8">
+    </meta> <!-- allows for cyrillic and other exotic text in console.logs -->
+</head>
+
+<body onload="onBodyLoad()">
+    <canvas id="canvas-id" width="1600" height="1200">
+        <script src="./engine.js"></script>
+        <script src="./inventory.js"></script>
+        <script src="./player.js"></script>
+        <!-- user's game file -->
+        <script src="game.js"></script>
+    </canvas>
+</body>
+
+</html>
