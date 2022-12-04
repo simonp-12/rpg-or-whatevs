@@ -10,7 +10,7 @@ let inventoryManager = {
 
 function init() {
     for (let i = 0; i < 100; i++) {
-        allItems.push(create_item("", "description", crop[randomInteger(12) + 1], randomInteger(1900), randomInteger(1300), ""));
+        allItems.push(create_random_item())
     }
 }
 
@@ -23,27 +23,37 @@ function update() {
             allItems[i] = allItems[allItems.length - 1];
             allItems.length--;
             backpack.push(item);
-            if(item.kind == "squash") {
+            if (item.kind == "squash") {
                 itemKinds[0].ammount++;
             } else if (item.kind == "carrot") {
-                
+                itemKinds[1].ammount++;
+            } else if (item.kind == "cabbage") {
+                itemKinds[2].ammount++;
+            } else if (item.kind == "tomato") {
+                itemKinds[3].ammount++;
             }
         }
     }
 }
-//    for (let i = 0; i < backpack.length; i++) {
-//        if(areColliding(mouseX, mouseY, 1, 1, backpack[i].x, backpack[i].y, 50, 50)) {
-//            console.log();
-//            context.font = "20px Baskerville Old Face";
-//            context.fillStyle = "white";
-//            context.fillText(backpack[i].label, mouseX - 10, mouseY - 10)
-//        }
-//    }
 
 function draw() {
     drawImage(grass, -player1.x, -player1.y, 1900, 1300);
     player1.draw()
     if (inventoryIsOpen) {
         inventoryManager.drawInventory();
+    }
+}
+
+function keydown(key) {
+    //console.log("Pressed", key);
+    if (isKeyPressed[69]) {
+        inventoryIsOpen = !inventoryIsOpen;
+        backpack.push(create_item(cabbage, "", crop[7], 0, 0, ""))
+    }
+}
+
+function mouseup() {
+    if (areColliding(mouseX, mouseY, 1, 1, canvas.width / 2 - (player1.width / 2), canvas.height / 2 - (player1.height / 2) - 30, 60, 20)) {
+        player1.name = prompt("Enter name");
     }
 }
