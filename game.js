@@ -45,7 +45,6 @@ function draw() {
 }
 
 function keydown(key) {
-    //console.log("Pressed", key);
     if (isKeyPressed[69]) {
         inventoryIsOpen = !inventoryIsOpen;
         backpack.push(create_item(cabbage, "", crop[7], 0, 0, ""))
