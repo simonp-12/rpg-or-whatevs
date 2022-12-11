@@ -1,6 +1,10 @@
 let inventoryIsOpen = false,
     backpack = [],
-    allItems = [];
+    allItems = [],
+    background = {
+        width: 1920,
+        height: 1920
+    };
 
 let inventoryManager = {
     backpack: [],
@@ -9,7 +13,7 @@ let inventoryManager = {
 }
 
 function init() {
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 150; i++) {
         allItems.push(create_random_item())
     }
 }
@@ -17,6 +21,7 @@ function init() {
 
 function update() {
     player1.move();
+    player1.borderControl();
     for (let i = 0; i < allItems.length; i++) {
         let item = allItems[i];
         if (areColliding(400 + player1.x - player1.width / 2, 300 + player1.y - player1.height / 2, player1.height, player1.width, item.x, item.y, 40, 40)) {
@@ -34,10 +39,11 @@ function update() {
             }
         }
     }
+    if(player1.name == null || player1.name == "") {player1.name = "Player1"}
 }
 
 function draw() {
-    drawImage(grass, -player1.x, -player1.y, 1900, 1300);
+    drawImage(grass, -player1.x, -player1.y, background.width, background.height);
     player1.draw()
     if (inventoryIsOpen) {
         inventoryManager.drawInventory();
@@ -47,7 +53,6 @@ function draw() {
 function keydown(key) {
     if (isKeyPressed[69]) {
         inventoryIsOpen = !inventoryIsOpen;
-        backpack.push(create_item(cabbage, "", crop[7], 0, 0, ""))
     }
 }
 
